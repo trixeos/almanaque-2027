@@ -1,0 +1,2987 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Almanaque de Estudos • 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-outer: #d5c7b2;
+      --bg-paper: #f5edd9;
+      --bg-paper-alt: #ebe0c6;
+      --bg-card: #faf4e6;
+      --bg-hover: #e7d9ba;
+      --ink-primary: #2b1e16;
+      --ink-secondary: #5c4636;
+      --ink-muted: #846d59;
+      --border-ink: #4a3525;
+      --border-light: #cbbba0;
+      --accent-crimson: #8b261d;
+      --accent-brass: #9b7a3c;
+      --accent-forest: #3a5a40;
+      --shadow-paper: 0 14px 38px rgba(43, 30, 22, 0.2), inset 0 0 70px rgba(155, 122, 60, 0.09);
+      --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --font-serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+      --font-mono: 'Courier Prime', 'Courier New', monospace;
+    }
+
+    body.dark-academia {
+      --bg-outer: #110e0c;
+      --bg-paper: #1e1915;
+      --bg-paper-alt: #27201b;
+      --bg-card: #241e19;
+      --bg-hover: #342b24;
+      --ink-primary: #e8dcc8;
+      --ink-secondary: #c2b29b;
+      --ink-muted: #8f7e6a;
+      --border-ink: #745d47;
+      --border-light: #3d3228;
+      --accent-crimson: #c94a3f;
+      --accent-brass: #c49d52;
+      --accent-forest: #628c6a;
+      --shadow-paper: 0 16px 42px rgba(0, 0, 0, 0.6), inset 0 0 70px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-serif);
+      background-color: var(--bg-outer);
+      color: var(--ink-primary);
+      min-height: 100vh;
+      padding: 22px 16px 48px;
+      line-height: 1.45;
+      transition: background-color 0.35s ease, color 0.35s ease;
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 65%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.055'/%3E%3C/svg%3E");
+    }
+
+    /* Animações Vintage */
+    @keyframes fadeInPaper {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pageTurn {
+      0% { opacity: 0.2; transform: translateX(8px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes modalRise {
+      from { opacity: 0; transform: translateY(14px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes stampThud {
+      0% { transform: scale(1.22) rotate(-6deg); }
+      60% { transform: scale(0.95) rotate(-2deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    @keyframes timerPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(139, 38, 29, 0.22); }
+      50% { box-shadow: 0 0 0 6px rgba(139, 38, 29, 0); }
+    }
+
+    @keyframes floatSeal {
+      0%, 100% { transform: rotate(-6deg) translateY(0px); }
+      50% { transform: rotate(-4deg) translateY(-2px); }
+    }
+
+    .page-turn {
+      animation: pageTurn 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .stamp-pop {
+      animation: stampThud 0.24s ease-out;
+    }
+
+    /* Ícones SVG */
+    .vintage-icon {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .vintage-icon.icon-sm {
+      width: 12px;
+      height: 12px;
+    }
+
+    .panel-title .vintage-icon {
+      width: 17px;
+      height: 17px;
+      color: var(--accent-crimson);
+    }
+
+    .panel-title-inner {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Moldura Principal do Almanaque */
+    .almanac-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      background-color: var(--bg-paper);
+      border: 3px double var(--border-ink);
+      box-shadow: var(--shadow-paper);
+      padding: 34px 36px 28px;
+      position: relative;
+      animation: fadeInPaper 0.55s ease-out;
+    }
+
+    .almanac-container::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border: 1px solid var(--border-light);
+      pointer-events: none;
+    }
+
+    /* Cantoneiras Botânicas Ornamentais */
+    .corner-flourish {
+      position: absolute;
+      width: 56px;
+      height: 56px;
+      color: var(--accent-brass);
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      pointer-events: none;
+      opacity: 0.78;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 1;
+    }
+
+    .corner-tl { top: 10px; left: 10px; }
+    .corner-tr { top: 10px; right: 10px; transform: scaleX(-1); }
+    .corner-bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+    .corner-br { bottom: 10px; right: 10px; transform: scale(-1); }
+
+    /* Cabeçalho / Masthead */
+    .masthead {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 14px;
+      margin-bottom: 8px;
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .masthead-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1 1 320px;
+    }
+
+    /* Selo de Cera Vintage */
+    .wax-seal {
+      width: 58px;
+      height: 58px;
+      flex-shrink: 0;
+      color: var(--accent-crimson);
+      filter: drop-shadow(0 3px 4px rgba(43, 30, 22, 0.24));
+      animation: floatSeal 5s ease-in-out infinite;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+
+    .wax-seal:hover {
+      animation: none;
+      transform: rotate(4deg) scale(1.06);
+    }
+
+    .masthead-title-block {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .masthead-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 2.2px;
+      color: var(--accent-crimson);
+      margin-bottom: 3px;
+    }
+
+    .masthead h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      color: var(--ink-primary);
+      cursor: pointer;
+      display: inline-block;
+      border-bottom: 1px dashed transparent;
+      transition: border-color 0.2s;
+    }
+
+    .masthead h1:hover {
+      border-bottom-color: var(--accent-brass);
+    }
+
+    .masthead-subtitle {
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--ink-secondary);
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    .masthead-subtitle:hover {
+      text-decoration: underline dotted var(--accent-brass);
+    }
+
+    .masthead-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      z-index: 2;
+    }
+
+    /* Divisor Botânico Ornamental */
+    .botanical-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 4px 0 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .botanical-divider::before,
+    .botanical-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border-ink), transparent);
+      opacity: 0.55;
+    }
+
+    .botanical-divider svg {
+      width: 110px;
+      height: 18px;
+      color: var(--accent-brass);
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* Botões */
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      padding: 7px 12px;
+      min-height: 36px;
+      background-color: var(--bg-paper-alt);
+      color: var(--ink-primary);
+      border: 1px solid var(--border-ink);
+      cursor: pointer;
+      transition: background-color 0.18s ease, transform 0.16s ease, box-shadow 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      white-space: nowrap;
+    }
+
+    .btn .vintage-icon {
+      color: var(--accent-crimson);
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--bg-hover);
+      transform: translateY(-1px);
+      box-shadow: 2px 2px 0 var(--border-ink);
+    }
+
+    .btn:hover .vintage-icon {
+      transform: scale(1.1);
+    }
+
+    .btn:active {
+      transform: translateY(0) scale(0.98);
+      box-shadow: none;
+    }
+
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-primary {
+      background-color: var(--ink-primary);
+      color: var(--bg-paper);
+    }
+
+    .btn-primary .vintage-icon {
+      color: var(--bg-paper);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--border-ink);
+      color: var(--bg-paper);
+    }
+
+    .btn-brass {
+      border-color: var(--accent-brass);
+      background-color: rgba(155, 122, 60, 0.14);
+    }
+
+    .btn-sm {
+      padding: 4px 9px;
+      min-height: 30px;
+      font-size: 0.72rem;
+    }
+
+    .btn-sm .vintage-icon {
+      width: 13px;
+      height: 13px;
+    }
+
+    /* Barra de Meses */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+      z-index: 2;
+    }
+
+    .month-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .month-tab {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      min-height: 32px;
+      border: 1px solid var(--border-light);
+      background: transparent;
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+    }
+
+    .month-tab:hover {
+      border-color: var(--border-ink);
+      color: var(--ink-primary);
+      background: var(--bg-hover);
+    }
+
+    .month-tab.active {
+      background-color: var(--ink-primary);
+      color: var(--bg-paper);
+      border-color: var(--ink-primary);
+      font-weight: 700;
+      box-shadow: 2px 2px 0 var(--accent-brass);
+    }
+
+    .save-indicator {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--accent-forest);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Workspace Desktop */
+    .workspace {
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      gap: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .month-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border-ink);
+      padding-bottom: 8px;
+      gap: 10px;
+    }
+
+    .month-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+      font-weight: 700;
+    }
+
+    .month-nav-arrows {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    /* Grade do Calendário */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      border-top: 2px solid var(--border-ink);
+      border-left: 2px solid var(--border-ink);
+      background-color: var(--bg-card);
+      box-shadow: 4px 4px 0 rgba(74, 53, 37, 0.12);
+    }
+
+    .weekday-header {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      padding: 9px 4px;
+      background-color: var(--bg-paper-alt);
+      border-right: 1px solid var(--border-ink);
+      border-bottom: 2px solid var(--border-ink);
+      color: var(--ink-secondary);
+    }
+
+    .weekday-header.sunday {
+      color: var(--accent-crimson);
+    }
+
+    .day-cell {
+      min-height: 116px;
+      border-right: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: background-color 0.18s ease, transform 0.14s ease, box-shadow 0.18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .day-cell:nth-child(7n) {
+      border-right: 2px solid var(--border-ink);
+    }
+
+    .day-cell:hover {
+      background-color: var(--bg-hover);
+      box-shadow: inset 0 0 0 1px var(--accent-brass);
+      z-index: 1;
+    }
+
+    .day-cell:active {
+      transform: scale(0.985);
+    }
+
+    .day-cell.empty {
+      background-color: var(--bg-paper-alt);
+      opacity: 0.42;
+      cursor: default;
+    }
+
+    .day-cell.empty:hover {
+      background-color: var(--bg-paper-alt);
+      box-shadow: none;
+    }
+
+    .day-cell.empty:active {
+      transform: none;
+    }
+
+    .day-cell.dimmed {
+      opacity: 0.35;
+    }
+
+    .day-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .day-number {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .day-cell.is-holiday .day-number,
+    .day-cell.is-sunday .day-number {
+      color: var(--accent-crimson);
+    }
+
+    .day-cell.is-today {
+      outline: 2px solid var(--accent-brass);
+      outline-offset: -3px;
+      background-color: rgba(155, 122, 60, 0.1);
+    }
+
+    .holiday-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--accent-crimson);
+      line-height: 1.1;
+      text-align: right;
+      max-width: 72%;
+      font-weight: 700;
+    }
+
+    .holiday-dot {
+      display: none;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--accent-crimson);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .stamp-badge {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 1px 4px;
+      border: 1.5px solid currentColor;
+      display: inline-block;
+      transform: rotate(-3deg);
+      margin-bottom: 4px;
+      align-self: flex-start;
+      opacity: 0.92;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .stamp-PROVA { color: var(--accent-crimson); }
+    .stamp-SIMULADO { color: #2b4c65; }
+    .stamp-REVISÃO { color: var(--accent-brass); }
+    .stamp-FOCO { color: var(--accent-forest); }
+    .stamp-DESCANSO { color: var(--ink-muted); }
+
+    body.dark-academia .stamp-SIMULADO { color: #6ea0c4; }
+
+    .cell-tasks {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 4px;
+      flex: 1;
+    }
+
+    .cell-task-item {
+      font-size: 0.76rem;
+      line-height: 1.2;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--ink-primary);
+      transition: opacity 0.2s;
+    }
+
+    .cell-task-item.done {
+      text-decoration: line-through;
+      opacity: 0.55;
+    }
+
+    .subject-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+
+    .cell-more {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--ink-muted);
+    }
+
+    .day-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 2px;
+      gap: 4px;
+    }
+
+    .note-icon {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--ink-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .hours-pill {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      background-color: var(--bg-paper-alt);
+      border: 1px solid var(--border-light);
+      padding: 1px 5px;
+      color: var(--ink-secondary);
+      margin-left: auto;
+    }
+
+    /* Barra Lateral com Moldura de Ficha */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .panel {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-ink);
+      padding: 15px;
+      position: relative;
+      box-shadow: 3px 3px 0 rgba(74, 53, 37, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .panel::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border: 1px solid var(--border-light);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .panel-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timer-display {
+      font-family: var(--font-mono);
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 2px;
+      padding: 8px 0;
+      color: var(--ink-primary);
+      border: 1px dashed var(--border-light);
+      background-color: var(--bg-paper);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+      transition: border-color 0.3s;
+    }
+
+    .timer-display.timer-running {
+      border-color: var(--accent-crimson);
+      color: var(--accent-crimson);
+      animation: timerPulse 2s infinite;
+    }
+
+    .timer-controls, .timer-presets {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timer-controls {
+      margin-bottom: 8px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-box {
+      background-color: var(--bg-paper);
+      border: 1px solid var(--border-light);
+      padding: 8px;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+
+    .stat-box:hover {
+      border-color: var(--accent-brass);
+    }
+
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--accent-crimson);
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    .subject-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .subject-filter-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 8px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.94rem;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .subject-filter-item:hover {
+      background-color: var(--bg-hover);
+    }
+
+    .subject-filter-item.active {
+      border-color: var(--border-ink);
+      background-color: var(--bg-paper-alt);
+      font-weight: 700;
+    }
+
+    .subject-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .subject-count {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+
+    .vintage-textarea {
+      width: 100%;
+      min-height: 98px;
+      background-color: var(--bg-paper);
+      color: var(--ink-primary);
+      border: 1px solid var(--border-light);
+      padding: 8px 10px;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      resize: vertical;
+      line-height: 1.5;
+      background-image: repeating-linear-gradient(transparent, transparent 23px, var(--border-light) 24px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .vintage-textarea:focus {
+      outline: 1px solid var(--border-ink);
+    }
+
+    /* Colofão / Rodapé Ilustrado */
+    .almanac-footer {
+      margin-top: 26px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-light);
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      letter-spacing: 1px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-ornament {
+      width: 34px;
+      height: 22px;
+      color: var(--accent-brass);
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Visão Anual */
+    .annual-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .mini-month {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-ink);
+      padding: 11px;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .mini-month:hover {
+      transform: translateY(-3px);
+      box-shadow: 4px 4px 0 var(--border-ink);
+    }
+
+    .mini-month-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .mini-month-hours {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-crimson);
+    }
+
+    .mini-cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+    }
+
+    .mini-day {
+      padding: 3px 1px;
+      border-radius: 2px;
+    }
+
+    .mini-day.has-activity {
+      background-color: var(--accent-brass);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .mini-day.has-holiday {
+      color: var(--accent-crimson);
+      font-weight: 700;
+    }
+
+    /* Modais */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(20, 14, 10, 0.72);
+      backdrop-filter: blur(2px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      z-index: 1000;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background-color: var(--bg-paper);
+      border: 3px double var(--border-ink);
+      width: 100%;
+      max-width: 620px;
+      max-height: 90dvh;
+      overflow-y: auto;
+      padding: 22px 24px;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.48);
+      position: relative;
+      animation: modalRise 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid var(--border-ink);
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+      gap: 10px;
+    }
+
+    .modal-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+    }
+
+    .modal-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent-crimson);
+      margin-top: 2px;
+    }
+
+    .close-btn {
+      background: none;
+      border: 1px solid var(--border-ink);
+      color: var(--ink-primary);
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.15s, color 0.15s;
+    }
+
+    .close-btn:hover {
+      background-color: var(--accent-crimson);
+      color: #fff;
+    }
+
+    .form-section {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--ink-secondary);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .vintage-input, .vintage-select {
+      font-family: var(--font-serif);
+      font-size: 1rem; /* >=16px evita zoom automático no iOS */
+      padding: 8px 10px;
+      min-height: 40px;
+      background-color: var(--bg-card);
+      color: var(--ink-primary);
+      border: 1px solid var(--border-ink);
+      width: 100%;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .input-row .vintage-input {
+      flex: 1;
+      min-width: 160px;
+      width: auto;
+    }
+
+    .input-row .vintage-select {
+      width: auto;
+      max-width: 100%;
+    }
+
+    .stamp-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .stamp-option {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      padding: 6px 10px;
+      min-height: 34px;
+      border: 1px solid var(--border-light);
+      background: var(--bg-card);
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .stamp-option.selected {
+      border: 2px solid var(--ink-primary);
+      background: var(--bg-hover);
+      color: var(--ink-primary);
+      font-weight: 700;
+    }
+
+    .modal-task-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .modal-task-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 10px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-light);
+      animation: fadeInPaper 0.2s ease-out;
+    }
+
+    .modal-task-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .modal-task-left input[type="checkbox"] {
+      width: 19px;
+      height: 19px;
+      flex-shrink: 0;
+      accent-color: var(--accent-forest);
+      cursor: pointer;
+    }
+
+    .modal-task-text {
+      word-break: break-word;
+    }
+
+    .modal-task-text.done {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    .subject-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 2px 6px;
+      color: #fff;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .delete-btn {
+      background: none;
+      border: none;
+      color: var(--accent-crimson);
+      cursor: pointer;
+      padding: 4px 6px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .hours-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .subject-manager-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .subject-manager-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 10px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-light);
+    }
+
+    /* GitHub Sync Modal */
+    .gh-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .gh-status-box {
+      background-color: var(--bg-card);
+      border: 1px dashed var(--border-ink);
+      padding: 10px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .gh-status-box.ok { border-color: var(--accent-forest); color: var(--accent-forest); }
+    .gh-status-box.err { border-color: var(--accent-crimson); color: var(--accent-crimson); }
+
+    .gh-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.94rem;
+      color: var(--ink-secondary);
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    .gh-checkbox-row input {
+      accent-color: var(--accent-crimson);
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .gh-help-note {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      border-top: 1px solid var(--border-light);
+      padding-top: 10px;
+      margin-top: 14px;
+    }
+
+    /* ============================================================
+       RESPONSIVIDADE: TABLET 11" (Paisagem e Retrato) & CELULAR
+       ============================================================ */
+
+    /* Tablet 11" em modo Paisagem (1024px - 1180px) */
+    @media (max-width: 1180px) {
+      .almanac-container {
+        padding: 26px 24px 22px;
+      }
+      .workspace {
+        grid-template-columns: 1fr 275px;
+        gap: 18px;
+      }
+      .day-cell {
+        min-height: 102px;
+      }
+    }
+
+    /* Tablet 11" em modo Retrato (700px - 980px) */
+    @media (max-width: 980px) {
+      .workspace {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      /* Barra lateral vira grade elegante de 2 colunas no tablet */
+      .sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .day-cell {
+        min-height: 98px;
+      }
+      .masthead-actions {
+        width: 100%;
+      }
+    }
+
+    /* Celular (até 680px) */
+    @media (max-width: 680px) {
+      body {
+        padding: 10px 8px 32px;
+      }
+      .almanac-container {
+        padding: 22px 12px 18px;
+      }
+      .almanac-container::before {
+        inset: 4px;
+      }
+      .corner-flourish {
+        width: 34px;
+        height: 34px;
+      }
+      .corner-tl { top: 6px; left: 6px; }
+      .corner-tr { top: 6px; right: 6px; }
+      .corner-bl { bottom: 6px; left: 6px; }
+      .corner-br { bottom: 6px; right: 6px; }
+
+      .masthead {
+        gap: 12px;
+        padding-bottom: 10px;
+      }
+      .wax-seal {
+        width: 46px;
+        height: 46px;
+      }
+      .masthead-kicker {
+        font-size: 0.66rem;
+        letter-spacing: 1.5px;
+      }
+      .masthead-subtitle {
+        font-size: 0.94rem;
+      }
+
+      /* Botões em grade prática para o polegar no celular */
+      .masthead-actions {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        width: 100%;
+      }
+      .masthead-actions .btn {
+        width: 100%;
+        min-height: 38px;
+        font-size: 0.7rem;
+        padding: 6px 8px;
+      }
+      #btn-github-sync {
+        grid-column: span 2;
+      }
+
+      /* Abas de meses roláveis horizontalmente no celular */
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+      }
+      .month-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .month-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .month-tab {
+        padding: 7px 12px;
+        min-height: 36px;
+      }
+      .save-indicator {
+        justify-content: flex-end;
+      }
+
+      /* Calendário compacto no celular */
+      .weekday-header {
+        font-size: 0.68rem;
+        letter-spacing: 0;
+        padding: 6px 2px;
+      }
+      .day-cell {
+        min-height: 76px;
+        padding: 4px 3px;
+      }
+      .day-number {
+        font-size: 0.98rem;
+      }
+      .holiday-label {
+        display: none;
+      }
+      .day-cell.is-holiday .holiday-dot {
+        display: inline-block;
+      }
+      .stamp-badge {
+        font-size: 0.52rem;
+        padding: 0px 3px;
+        letter-spacing: 0.3px;
+        margin-bottom: 2px;
+      }
+      .cell-task-item {
+        font-size: 0.64rem;
+        gap: 3px;
+      }
+      .subject-dot {
+        width: 5px;
+        height: 5px;
+      }
+      .cell-more {
+        font-size: 0.58rem;
+      }
+      .note-icon {
+        font-size: 0; /* Mostra só o ícone da pena no celular */
+      }
+      .hours-pill {
+        font-size: 0.6rem;
+        padding: 1px 3px;
+      }
+
+      /* Sidebar em 1 coluna no celular */
+      .sidebar {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      /* Modal adaptado estilo gaveta no celular */
+      .modal-overlay {
+        padding: 8px;
+        align-items: flex-end;
+      }
+      .modal-box {
+        padding: 18px 16px;
+        max-height: 92dvh;
+      }
+      .gh-grid {
+        grid-template-columns: 1fr;
+      }
+      .input-row .vintage-select {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff !important;
+        padding: 0;
+      }
+      .almanac-container {
+        box-shadow: none;
+        border: 1px solid #000;
+        max-width: 100%;
+      }
+      .masthead-actions, .toolbar, .sidebar, .month-nav-arrows, .almanac-footer {
+        display: none !important;
+      }
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+      .day-cell {
+        min-height: 95px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="almanac-container">
+    <!-- Cantoneiras Botânicas Ornamentais (4 cantos) -->
+    <svg class="corner-flourish corner-tl" viewBox="0 0 80 80" aria-hidden="true">
+      <path d="M6 74 V22 C6 12 12 6 22 6 H74" />
+      <path d="M12 58 V24 C12 16 16 12 24 12 H58" opacity="0.65" />
+      <path d="M12 12 C22 12 26 20 20 26 C14 20 12 22 12 12 Z" fill="currentColor" fill-opacity="0.16" />
+      <path d="M25 12 C33 6 39 10 35 16 C31 18 27 16 25 12 Z" fill="currentColor" fill-opacity="0.12" />
+      <path d="M12 25 C6 33 10 39 16 35 C18 31 16 27 12 25 Z" fill="currentColor" fill-opacity="0.12" />
+      <circle cx="29" cy="29" r="1.7" fill="currentColor" />
+    </svg>
+    <svg class="corner-flourish corner-tr" viewBox="0 0 80 80" aria-hidden="true">
+      <path d="M6 74 V22 C6 12 12 6 22 6 H74" />
+      <path d="M12 58 V24 C12 16 16 12 24 12 H58" opacity="0.65" />
+      <path d="M12 12 C22 12 26 20 20 26 C14 20 12 22 12 12 Z" fill="currentColor" fill-opacity="0.16" />
+      <path d="M25 12 C33 6 39 10 35 16 C31 18 27 16 25 12 Z" fill="currentColor" fill-opacity="0.12" />
+      <path d="M12 25 C6 33 10 39 16 35 C18 31 16 27 12 25 Z" fill="currentColor" fill-opacity="0.12" />
+      <circle cx="29" cy="29" r="1.7" fill="currentColor" />
+    </svg>
+    <svg class="corner-flourish corner-bl" viewBox="0 0 80 80" aria-hidden="true">
+      <path d="M6 74 V22 C6 12 12 6 22 6 H74" />
+      <path d="M12 58 V24 C12 16 16 12 24 12 H58" opacity="0.65" />
+      <path d="M12 12 C22 12 26 20 20 26 C14 20 12 22 12 12 Z" fill="currentColor" fill-opacity="0.16" />
+      <path d="M25 12 C33 6 39 10 35 16 C31 18 27 16 25 12 Z" fill="currentColor" fill-opacity="0.12" />
+      <path d="M12 25 C6 33 10 39 16 35 C18 31 16 27 12 25 Z" fill="currentColor" fill-opacity="0.12" />
+      <circle cx="29" cy="29" r="1.7" fill="currentColor" />
+    </svg>
+    <svg class="corner-flourish corner-br" viewBox="0 0 80 80" aria-hidden="true">
+      <path d="M6 74 V22 C6 12 12 6 22 6 H74" />
+      <path d="M12 58 V24 C12 16 16 12 24 12 H58" opacity="0.65" />
+      <path d="M12 12 C22 12 26 20 20 26 C14 20 12 22 12 12 Z" fill="currentColor" fill-opacity="0.16" />
+      <path d="M25 12 C33 6 39 10 35 16 C31 18 27 16 25 12 Z" fill="currentColor" fill-opacity="0.12" />
+      <path d="M12 25 C6 33 10 39 16 35 C18 31 16 27 12 25 Z" fill="currentColor" fill-opacity="0.12" />
+      <circle cx="29" cy="29" r="1.7" fill="currentColor" />
+    </svg>
+
+    <header class="masthead">
+      <div class="masthead-left">
+        <!-- Selo de Cera Vintage 2027 -->
+        <svg class="wax-seal" viewBox="0 0 64 64" aria-hidden="true" title="Selo do Almanaque 2027">
+          <path d="M32 3 C36 3 38 6 41 5 C45 4 47 7 50 9 C54 11 54 15 57 18 C60 21 58 25 60 28 C62 32 59 35 60 39 C61 43 57 45 56 49 C55 53 51 53 49 56 C46 59 42 57 39 59 C35 61 32 58 28 60 C24 61 22 57 18 56 C14 55 14 51 11 49 C8 46 10 42 8 39 C6 35 9 32 7 28 C6 24 10 21 11 18 C12 14 16 14 18 11 C21 8 25 10 28 6 C30 4 31 3 32 3 Z" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="32" cy="32" r="20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 2"/>
+          <circle cx="32" cy="32" r="16" fill="none" stroke="currentColor" stroke-width="1"/>
+          <text x="32" y="36" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="12" font-weight="700" fill="currentColor">2027</text>
+        </svg>
+
+        <div class="masthead-title-block">
+          <div class="masthead-kicker">Edição Anual • Ano de 2027 • Planejamento Acadêmico</div>
+          <h1 id="notebook-title" title="Clique para personalizar o título">Almanaque de Estudos 2027</h1>
+          <div id="notebook-subtitle" class="masthead-subtitle" title="Clique para editar seu lema ou meta anual">
+            “Constância silenciosa constrói grandes resultados.”
+          </div>
+        </div>
+      </div>
+
+      <div class="masthead-actions">
+        <button class="btn btn-brass" id="btn-github-sync" title="Sincronizar com seu repositório privado no GitHub"></button>
+        <button class="btn" id="btn-annual-view" title="Alternar entre visão mensal e anual"></button>
+        <button class="btn" id="btn-subjects" title="Gerenciar matérias e cores"></button>
+        <button class="btn" id="btn-theme" title="Alternar entre Papel Envelhecido e Biblioteca Noturna"></button>
+        <button class="btn" id="btn-export" title="Baixar arquivo de backup dos seus estudos"></button>
+        <button class="btn" id="btn-import" title="Restaurar arquivo de backup"></button>
+        <button class="btn" id="btn-print" title="Imprimir o mês atual"></button>
+        <input type="file" id="import-file-input" accept=".json" style="display: none;" />
+      </div>
+    </header>
+
+    <!-- Divisor Botânico -->
+    <div class="botanical-divider" aria-hidden="true">
+      <svg viewBox="0 0 120 20">
+        <path d="M5 10 H44 M76 10 H115" opacity="0.6" />
+        <path d="M44 10 C38 4 32 4 28 10 C32 16 38 16 44 10 Z" fill="currentColor" fill-opacity="0.14"/>
+        <path d="M76 10 C82 4 88 4 92 10 C88 16 82 16 76 10 Z" fill="currentColor" fill-opacity="0.14"/>
+        <path d="M60 3 L63 10 L60 17 L57 10 Z" fill="currentColor" fill-opacity="0.25"/>
+        <circle cx="51" cy="10" r="1.3" fill="currentColor"/>
+        <circle cx="69" cy="10" r="1.3" fill="currentColor"/>
+      </svg>
+    </div>
+
+    <div class="toolbar">
+      <div class="month-tabs" id="month-tabs"></div>
+      <div class="save-indicator" id="save-indicator"></div>
+    </div>
+
+    <main id="monthly-view" class="workspace">
+      <section>
+        <div class="month-header">
+          <h2 id="current-month-title">Janeiro de 2027</h2>
+          <div class="month-nav-arrows">
+            <button class="btn btn-sm" id="prev-month"></button>
+            <button class="btn btn-sm" id="next-month"></button>
+          </div>
+        </div>
+
+        <div class="calendar-grid" id="calendar-grid"></div>
+      </section>
+
+      <aside class="sidebar">
+        <div class="panel">
+          <div class="panel-title">
+            <span class="panel-title-inner" id="title-timer"></span>
+          </div>
+          <div class="timer-display" id="timer-display">25:00</div>
+          <div class="timer-controls">
+            <button class="btn btn-sm btn-primary" id="timer-start"></button>
+            <button class="btn btn-sm" id="timer-pause"></button>
+            <button class="btn btn-sm" id="timer-reset"></button>
+          </div>
+          <div class="timer-presets">
+            <button class="btn btn-sm" data-minutes="25">25m</button>
+            <button class="btn btn-sm" data-minutes="50">50m</button>
+            <button class="btn btn-sm" data-minutes="15">Pausa 15m</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">
+            <span class="panel-title-inner" id="title-balance"></span>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="stat-month-hours">0h</div>
+              <div class="stat-label">Horas no Mês</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="stat-year-hours">0h</div>
+              <div class="stat-label">Total em 2027</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="stat-tasks-done">0/0</div>
+              <div class="stat-label">Tarefas do Mês</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="stat-study-days">0</div>
+              <div class="stat-label">Dias Ativos</div>
+            </div>
+          </div>
+
+          <div class="form-label" style="margin-top: 6px;">Filtrar por Matéria:</div>
+          <div class="subject-list" id="subject-filter-list"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">
+            <span class="panel-title-inner" id="month-goals-label"></span>
+          </div>
+          <textarea id="month-goals-input" class="vintage-textarea" placeholder="Escreva aqui os objetivos principais deste mês, livros a ler ou provas importantes..."></textarea>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">
+            <span class="panel-title-inner" id="title-general-notes"></span>
+          </div>
+          <textarea id="general-notes-input" class="vintage-textarea" placeholder="Anotações permanentes, cronograma semanal fixo, links ou lembretes para o ano inteiro..."></textarea>
+        </div>
+      </aside>
+    </main>
+
+    <section id="annual-view" style="display: none;">
+      <div class="month-header">
+        <h2>Panorama Completo de 2027</h2>
+        <button class="btn btn-sm btn-primary" id="btn-back-to-month">Voltar ao Mês</button>
+      </div>
+      <div class="annual-grid" id="annual-grid"></div>
+    </section>
+
+    <!-- Colofão / Rodapé Vintage -->
+    <footer class="almanac-footer">
+      <svg class="footer-ornament" viewBox="0 0 36 22" aria-hidden="true">
+        <path d="M18 19 C14 14 7 14 3 16 V5 C7 3 14 3 18 8 C22 3 29 3 33 5 V16 C29 14 22 14 18 19 Z" />
+        <path d="M18 8 V19" />
+      </svg>
+      <span>ALMANAQUE DE ESTUDOS • ANNO MMXXVII • EDIÇÃO PESSOAL</span>
+    </footer>
+  </div>
+
+  <!-- Modal do Dia -->
+  <div class="modal-overlay" id="day-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <h3 id="modal-date-title">15 de Janeiro de 2027</h3>
+          <div class="modal-subtitle" id="modal-date-subtitle">Sexta-feira</div>
+        </div>
+        <button class="close-btn" id="close-day-modal" title="Fechar"></button>
+      </div>
+
+      <div class="form-section">
+        <span class="form-label">Carimbo do Dia:</span>
+        <div class="stamp-selector" id="stamp-selector">
+          <button class="stamp-option" data-stamp="">Sem carimbo</button>
+          <button class="stamp-option" data-stamp="PROVA">PROVA</button>
+          <button class="stamp-option" data-stamp="SIMULADO">SIMULADO</button>
+          <button class="stamp-option" data-stamp="REVISÃO">REVISÃO</button>
+          <button class="stamp-option" data-stamp="FOCO">FOCO TOTAL</button>
+          <button class="stamp-option" data-stamp="DESCANSO">DESCANSO</button>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <label class="form-label" for="modal-hours-input">Horas Estudadas neste Dia:</label>
+        <div class="hours-row">
+          <input type="number" step="0.5" min="0" max="24" id="modal-hours-input" class="vintage-input" style="width: 95px;" />
+          <button class="btn btn-sm" data-add-hours="0.5">+0.5h</button>
+          <button class="btn btn-sm" data-add-hours="1">+1h</button>
+          <button class="btn btn-sm" data-add-hours="2">+2h</button>
+          <button class="btn btn-sm" id="modal-hours-clear">Zerar</button>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <label class="form-label">Tarefas & Tópicos de Estudo:</label>
+        <div class="input-row">
+          <input type="text" id="new-task-input" class="vintage-input" placeholder="Ex: Ler Cap. 4, Resolver 20 questões..." />
+          <select id="new-task-subject" class="vintage-select"></select>
+          <button class="btn btn-primary" id="add-task-btn">Adicionar</button>
+        </div>
+        <ul class="modal-task-list" id="modal-task-list"></ul>
+      </div>
+
+      <div class="form-section" style="margin-bottom: 0;">
+        <label class="form-label" for="modal-notes-input">Notas, Resumos ou Dúvidas do Dia:</label>
+        <textarea id="modal-notes-input" class="vintage-textarea" style="min-height: 110px;" placeholder="Registre o que aprendeu, páginas lidas, acertos em simulados ou pontos a revisar..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Gerenciador de Matérias -->
+  <div class="modal-overlay" id="subjects-modal">
+    <div class="modal-box" style="max-width: 500px;">
+      <div class="modal-header">
+        <div>
+          <h3>Matérias & Disciplinas</h3>
+          <div class="modal-subtitle">Personalize suas etiquetas de estudo</div>
+        </div>
+        <button class="close-btn" id="close-subjects-modal" title="Fechar"></button>
+      </div>
+
+      <div class="form-section">
+        <label class="form-label">Nova Matéria:</label>
+        <div class="input-row">
+          <input type="text" id="new-subject-name" class="vintage-input" placeholder="Nome da matéria..." />
+          <input type="color" id="new-subject-color" value="#8b261d" style="height: 40px; width: 48px; padding: 2px; border: 1px solid var(--border-ink); background: var(--bg-card); cursor: pointer;" />
+          <button class="btn btn-primary" id="add-subject-btn">Criar</button>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <span class="form-label">Matérias Cadastradas:</span>
+        <div class="subject-manager-list" id="subject-manager-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Sincronização GitHub -->
+  <div class="modal-overlay" id="github-modal">
+    <div class="modal-box" style="max-width: 560px;">
+      <div class="modal-header">
+        <div>
+          <h3>Sincronização via GitHub</h3>
+          <div class="modal-subtitle">Trabalhe offline e sincronize entre escola, casa e celular</div>
+        </div>
+        <button class="close-btn" id="close-github-modal" title="Fechar"></button>
+      </div>
+
+      <div class="gh-status-box" id="gh-status-box">
+        Configure seu repositório privado abaixo para enviar ou baixar seus dados quando houver internet.
+      </div>
+
+      <div class="form-section gh-grid">
+        <div>
+          <label class="form-label" for="gh-owner">Usuário do GitHub:</label>
+          <input type="text" id="gh-owner" class="vintage-input" placeholder="ex: maria-silva" />
+        </div>
+        <div>
+          <label class="form-label" for="gh-repo">Repositório Privado:</label>
+          <input type="text" id="gh-repo" class="vintage-input" placeholder="ex: estudos-2027-dados" />
+        </div>
+      </div>
+
+      <div class="form-section gh-grid">
+        <div>
+          <label class="form-label" for="gh-path">Arquivo no Repositório:</label>
+          <input type="text" id="gh-path" class="vintage-input" value="dados-2027.json" />
+        </div>
+        <div>
+          <label class="form-label" for="gh-token">Token de Acesso (PAT):</label>
+          <input type="password" id="gh-token" class="vintage-input" placeholder="github_pat_..." />
+        </div>
+      </div>
+
+      <div class="form-section">
+        <label class="gh-checkbox-row">
+          <input type="checkbox" id="gh-remember-token" />
+          <span>Lembrar token neste aparelho (desmarque em PCs da escola)</span>
+        </label>
+      </div>
+
+      <div class="input-row" style="margin-top: 12px;">
+        <button class="btn btn-primary" id="gh-push-btn" style="flex:1; justify-content:center;"></button>
+        <button class="btn" id="gh-pull-btn" style="flex:1; justify-content:center;"></button>
+      </div>
+
+      <div class="gh-help-note">
+        <strong>Fluxo recomendado:</strong><br>
+        • Ao chegar em um aparelho novo (ou em casa após editar na escola), clique em <strong>Baixar do GitHub</strong>.<br>
+        • Após estudar e atualizar o calendário, clique em <strong>Enviar para GitHub</strong>.<br>
+        • Seu token nunca é enviado para o arquivo JSON salvo no repositório.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'almanaque_estudos_2027_v1';
+      const GH_CONFIG_KEY = 'almanaque_gh_cfg_2027_v1';
+
+      const ICONS = {
+        cloud: '<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>',
+        upload: '<path d="M12 16V4m0 0-4 4m4-4 4 4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>',
+        download: '<path d="M12 4v12m0 0-4-4m4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>',
+        calendar: '<rect x="3" y="4" width="18" height="17" rx="1"/><path d="M16 2v4M8 2v4M3 9h18M8 13h2M14 13h2M8 17h2M14 17h2"/>',
+        month: '<rect x="3" y="4" width="18" height="17" rx="1"/><path d="M16 2v4M8 2v4M3 9h18M7 13h10v4H7z"/>',
+        book: '<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h8M8 11h6"/>',
+        candle: '<path d="M12 2c1.5 2 2 3.5 0 5-2-1.5-1.5-3 0-5z"/><rect x="9" y="9" width="6" height="11"/><path d="M6 20h12M9 12h6"/>',
+        scroll: '<path d="M19 4H7a3 3 0 0 0-3 3v11a2 2 0 0 0 2 2h11a3 3 0 0 0 3-3V6a2 2 0 0 0-1-1.73"/><path d="M19 4a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8"/><path d="M8 13h7M8 16h5"/>',
+        export: '<path d="M12 3v12m0 0-4-4m4 4 4-4"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/>',
+        import: '<path d="M12 15V3m0 0-4 4m4-4 4 4"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/>',
+        print: '<path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/><path d="M17 12h.01"/>',
+        hourglass: '<path d="M6 2h12M6 22h12M8 2v4.5a4 4 0 0 0 1.6 3.2L12 11.5l2.4-1.8A4 4 0 0 0 16 6.5V2M8 22v-4.5a4 4 0 0 1 1.6-3.2L12 12.5l2.4 1.8a4 4 0 0 1 1.6 3.2V22"/>',
+        nib: '<path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="1.5"/>',
+        notebook: '<path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2V4z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8V4z"/>',
+        pen: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
+        star: '<path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/>',
+        play: '<polygon points="7 4 19 12 7 20 7 4"/>',
+        pause: '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>',
+        reset: '<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>',
+        chevLeft: '<path d="M15 18l-6-6 6-6"/>',
+        chevRight: '<path d="M9 18l6-6-6-6"/>',
+        close: '<path d="M18 6L6 18M6 6l12 12"/>'
+      };
+
+      function svgIcon(name, small = false) {
+        const cls = small ? 'vintage-icon icon-sm' : 'vintage-icon';
+        return `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name] || ''}</svg>`;
+      }
+
+      const MONTHS = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+      ];
+
+      const MONTHS_SHORT = [
+        'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+        'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'
+      ];
+
+      const WEEKDAYS = [
+        'Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira',
+        'Quinta-feira', 'Sexta-feira', 'Sábado'
+      ];
+
+      const WEEKDAYS_SHORT = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+      const HOLIDAYS_2027 = {
+        '2027-01-01': 'Confraternização Universal',
+        '2027-02-08': 'Carnaval',
+        '2027-02-09': 'Carnaval',
+        '2027-03-26': 'Sexta-Feira Santa',
+        '2027-03-28': 'Páscoa',
+        '2027-04-21': 'Tiradentes',
+        '2027-05-01': 'Dia do Trabalho',
+        '2027-05-27': 'Corpus Christi',
+        '2027-09-07': 'Independência do Brasil',
+        '2027-10-12': 'N. Sra. Aparecida',
+        '2027-11-02': 'Finados',
+        '2027-11-15': 'Proclamação da República',
+        '2027-11-20': 'Consciência Negra',
+        '2027-12-25': 'Natal'
+      };
+
+      const DEFAULT_STATE = {
+        profile: {
+          title: 'Almanaque de Estudos 2027',
+          subtitle: '“Constância silenciosa constrói grandes resultados.”',
+          theme: 'parchment'
+        },
+        subjects: [
+          { id: 'hist', name: 'História & Humanas', color: '#8b261d' },
+          { id: 'mat', name: 'Matemática & Exatas', color: '#2b4c65' },
+          { id: 'lit', name: 'Português & Redação', color: '#6b4c35' },
+          { id: 'cien', name: 'Ciências da Natureza', color: '#3a5a40' },
+          { id: 'idiom', name: 'Idiomas', color: '#6d4c7d' },
+          { id: 'rev', name: 'Revisão / Simulados', color: '#9b7a3c' }
+        ],
+        days: {},
+        monthGoals: {},
+        generalNotes: '',
+        lastModified: null
+      };
+
+      let state = loadState();
+      let ghConfig = loadGhConfig();
+      let sessionToken = ghConfig.token || '';
+      let currentMonth = getInitialMonth();
+      let selectedDateKey = null;
+      let activeSubjectFilter = null;
+      let isAnnualView = false;
+
+      let timerSeconds = 25 * 60;
+      let timerInterval = null;
+
+      function initStaticIcons() {
+        document.getElementById('btn-github-sync').innerHTML = `${svgIcon('cloud')} GitHub Sync`;
+        document.getElementById('btn-subjects').innerHTML = `${svgIcon('book')} Matérias`;
+        document.getElementById('btn-export').innerHTML = `${svgIcon('export')} Exportar`;
+        document.getElementById('btn-import').innerHTML = `${svgIcon('import')} Importar`;
+        document.getElementById('btn-print').innerHTML = `${svgIcon('print')} Imprimir`;
+        document.getElementById('save-indicator').innerHTML = `${svgIcon('star', true)} Salvo localmente`;
+
+        document.getElementById('prev-month').innerHTML = `${svgIcon('chevLeft')} Anterior`;
+        document.getElementById('next-month').innerHTML = `Próximo ${svgIcon('chevRight')}`;
+
+        document.getElementById('title-timer').innerHTML = `${svgIcon('hourglass')} Cronômetro de Foco`;
+        document.getElementById('title-balance').innerHTML = `${svgIcon('nib')} Balanço de Estudos`;
+        document.getElementById('title-general-notes').innerHTML = `${svgIcon('notebook')} Caderno Geral de 2027`;
+
+        document.getElementById('timer-start').innerHTML = `${svgIcon('play')} Iniciar`;
+        document.getElementById('timer-pause').innerHTML = `${svgIcon('pause')} Pausar`;
+        document.getElementById('timer-reset').innerHTML = `${svgIcon('reset')} Zerar`;
+
+        document.getElementById('close-day-modal').innerHTML = svgIcon('close');
+        document.getElementById('close-subjects-modal').innerHTML = svgIcon('close');
+        document.getElementById('close-github-modal').innerHTML = svgIcon('close');
+
+        document.getElementById('gh-push-btn').innerHTML = `${svgIcon('upload')} Enviar para GitHub`;
+        document.getElementById('gh-pull-btn').innerHTML = `${svgIcon('download')} Baixar do GitHub`;
+      }
+
+      function getInitialMonth() {
+        const now = new Date();
+        if (now.getFullYear() === 2027) return now.getMonth();
+        return 0;
+      }
+
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return structuredClone(DEFAULT_STATE);
+          const parsed = JSON.parse(raw);
+          return {
+            profile: { ...DEFAULT_STATE.profile, ...(parsed.profile || {}) },
+            subjects: Array.isArray(parsed.subjects) && parsed.subjects.length ? parsed.subjects : structuredClone(DEFAULT_STATE.subjects),
+            days: parsed.days || {},
+            monthGoals: parsed.monthGoals || {},
+            generalNotes: parsed.generalNotes || '',
+            lastModified: parsed.lastModified || null
+          };
+        } catch (e) {
+          return structuredClone(DEFAULT_STATE);
+        }
+      }
+
+      function saveState(updateTimestamp = true) {
+        try {
+          if (updateTimestamp) {
+            state.lastModified = new Date().toISOString();
+          }
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          const indicator = document.getElementById('save-indicator');
+          indicator.innerHTML = `${svgIcon('star', true)} Salvo neste aparelho`;
+          setTimeout(() => {
+            indicator.innerHTML = `${svgIcon('star', true)} Salvo localmente`;
+          }, 1500);
+        } catch (e) {
+          alert('Não foi possível salvar no armazenamento local do navegador.');
+        }
+      }
+
+      function loadGhConfig() {
+        try {
+          const raw = localStorage.getItem(GH_CONFIG_KEY);
+          if (!raw) return { owner: '', repo: '', path: 'dados-2027.json', token: '', rememberToken: false, lastSyncedAt: null };
+          return {
+            owner: '',
+            repo: '',
+            path: 'dados-2027.json',
+            token: '',
+            rememberToken: false,
+            lastSyncedAt: null,
+            ...JSON.parse(raw)
+          };
+        } catch (e) {
+          return { owner: '', repo: '', path: 'dados-2027.json', token: '', rememberToken: false, lastSyncedAt: null };
+        }
+      }
+
+      function saveGhConfig() {
+        const toSave = {
+          owner: ghConfig.owner,
+          repo: ghConfig.repo,
+          path: ghConfig.path,
+          rememberToken: ghConfig.rememberToken,
+          token: ghConfig.rememberToken ? sessionToken : '',
+          lastSyncedAt: ghConfig.lastSyncedAt
+        };
+        try {
+          localStorage.setItem(GH_CONFIG_KEY, JSON.stringify(toSave));
+        } catch (e) {}
+      }
+
+      function toBase64Utf8(str) {
+        const bytes = new TextEncoder().encode(str);
+        let binary = '';
+        bytes.forEach(b => { binary += String.fromCharCode(b); });
+        return btoa(binary);
+      }
+
+      function fromBase64Utf8(b64) {
+        const binary = atob(b64.replace(/\s/g, ''));
+        const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+        return new TextDecoder().decode(bytes);
+      }
+
+      function formatDateTimeBR(iso) {
+        if (!iso) return 'Nunca';
+        try {
+          return new Date(iso).toLocaleString('pt-BR', {
+            day: '2-digit', month: '2-digit', year: 'numeric',
+            hour: '2-digit', minute: '2-digit'
+          });
+        } catch (e) {
+          return iso;
+        }
+      }
+
+      function setGhStatus(msg, type = '') {
+        const box = document.getElementById('gh-status-box');
+        box.className = 'gh-status-box' + (type ? ' ' + type : '');
+        box.innerHTML = msg;
+      }
+
+      function readGhInputs() {
+        ghConfig.owner = document.getElementById('gh-owner').value.trim();
+        ghConfig.repo = document.getElementById('gh-repo').value.trim();
+        ghConfig.path = document.getElementById('gh-path').value.trim() || 'dados-2027.json';
+        ghConfig.rememberToken = document.getElementById('gh-remember-token').checked;
+        sessionToken = document.getElementById('gh-token').value.trim();
+        saveGhConfig();
+
+        if (!ghConfig.owner || !ghConfig.repo || !sessionToken) {
+          setGhStatus('Preencha o Usuário do GitHub, o Nome do Repositório e o Token.', 'err');
+          return false;
+        }
+        return true;
+      }
+
+      function setGhButtonsLoading(loading) {
+        document.getElementById('gh-push-btn').disabled = loading;
+        document.getElementById('gh-pull-btn').disabled = loading;
+      }
+
+      async function pushToGithub() {
+        if (!readGhInputs()) return;
+        if (!navigator.onLine) {
+          setGhStatus('Você está offline no momento. Conecte-se à internet para enviar ao GitHub.', 'err');
+          return;
+        }
+
+        const apiUrl = `https://api.github.com/repos/${encodeURIComponent(ghConfig.owner)}/${encodeURIComponent(ghConfig.repo)}/contents/${ghConfig.path.split('/').map(encodeURIComponent).join('/')}`;
+        setGhButtonsLoading(true);
+        setGhStatus('Verificando arquivo no GitHub...');
+
+        try {
+          let sha = null;
+          const getRes = await fetch(apiUrl, {
+            method: 'GET',
+            cache: 'no-store',
+            headers: {
+              'Authorization': `Bearer ${sessionToken}`,
+              'Accept': 'application/vnd.github+json'
+            }
+          });
+
+          if (getRes.ok) {
+            const existing = await getRes.json();
+            sha = existing.sha;
+            if (existing.content) {
+              try {
+                const remoteJson = JSON.parse(fromBase64Utf8(existing.content));
+                if (remoteJson.lastModified && (!ghConfig.lastSyncedAt || remoteJson.lastModified > ghConfig.lastSyncedAt)) {
+                  const ok = confirm(
+                    `O arquivo no GitHub foi atualizado em ${formatDateTimeBR(remoteJson.lastModified)} (mais recente que sua última sincronização aqui).\n\nDeseja sobrescrever o GitHub com os dados deste aparelho?`
+                  );
+                  if (!ok) {
+                    setGhStatus('Envio cancelado. Você pode clicar em "Baixar do GitHub" antes se preferir.', '');
+                    setGhButtonsLoading(false);
+                    return;
+                  }
+                }
+              } catch (e) {}
+            }
+          } else if (getRes.status === 401 || getRes.status === 403) {
+            throw new Error('Token inválido ou sem permissão de leitura/escrita neste repositório.');
+          } else if (getRes.status !== 404) {
+            throw new Error(`Erro ao consultar repositório (código ${getRes.status}). Verifique usuário e nome do repositório.`);
+          }
+
+          if (!state.lastModified) {
+            saveState(true);
+          }
+
+          setGhStatus('Enviando seus estudos para a nuvem...');
+          const putBody = {
+            message: `Almanaque 2027: sincronização (${new Date().toLocaleString('pt-BR')})`,
+            content: toBase64Utf8(JSON.stringify(state, null, 2))
+          };
+          if (sha) putBody.sha = sha;
+
+          const putRes = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: {
+              'Authorization': `Bearer ${sessionToken}`,
+              'Accept': 'application/vnd.github+json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(putBody)
+          });
+
+          if (!putRes.ok) {
+            const errData = await putRes.json().catch(() => ({}));
+            throw new Error(errData.message || `Falha ao enviar (código ${putRes.status}).`);
+          }
+
+          ghConfig.lastSyncedAt = state.lastModified;
+          saveGhConfig();
+          setGhStatus(`Enviado com sucesso! Última sincronização: ${formatDateTimeBR(ghConfig.lastSyncedAt)}`, 'ok');
+        } catch (err) {
+          setGhStatus(`Erro: ${err.message}`, 'err');
+        } finally {
+          setGhButtonsLoading(false);
+        }
+      }
+
+      async function pullFromGithub() {
+        if (!readGhInputs()) return;
+        if (!navigator.onLine) {
+          setGhStatus('Você está offline no momento. Conecte-se à internet para baixar do GitHub.', 'err');
+          return;
+        }
+
+        const apiUrl = `https://api.github.com/repos/${encodeURIComponent(ghConfig.owner)}/${encodeURIComponent(ghConfig.repo)}/contents/${ghConfig.path.split('/').map(encodeURIComponent).join('/')}`;
+        setGhButtonsLoading(true);
+        setGhStatus('Buscando dados no GitHub...');
+
+        try {
+          const getRes = await fetch(apiUrl, {
+            method: 'GET',
+            cache: 'no-store',
+            headers: {
+              'Authorization': `Bearer ${sessionToken}`,
+              'Accept': 'application/vnd.github+json'
+            }
+          });
+
+          if (getRes.status === 404) {
+            throw new Error('Arquivo ainda não encontrado neste repositório. Clique em "Enviar para GitHub" primeiro.');
+          }
+          if (getRes.status === 401 || getRes.status === 403) {
+            throw new Error('Token inválido ou sem permissão para acessar este repositório.');
+          }
+          if (!getRes.ok) {
+            throw new Error(`Erro ao baixar (código ${getRes.status}).`);
+          }
+
+          const fileData = await getRes.json();
+          if (!fileData.content) {
+            throw new Error('O arquivo no repositório está vazio.');
+          }
+
+          const remoteState = JSON.parse(fromBase64Utf8(fileData.content));
+          if (!remoteState || typeof remoteState !== 'object' || !remoteState.days) {
+            throw new Error('O arquivo no GitHub não possui um formato válido do Almanaque 2027.');
+          }
+
+          const remoteTime = formatDateTimeBR(remoteState.lastModified);
+          const localTime = formatDateTimeBR(state.lastModified);
+          const ok = confirm(
+            `Dados encontrados no GitHub!\n• Salvo no GitHub: ${remoteTime}\n• Salvo neste aparelho: ${localTime}\n\nDeseja atualizar este aparelho com os dados do GitHub?`
+          );
+          if (!ok) {
+            setGhStatus('Download cancelado.', '');
+            setGhButtonsLoading(false);
+            return;
+          }
+
+          state = {
+            profile: { ...DEFAULT_STATE.profile, ...(remoteState.profile || {}) },
+            subjects: Array.isArray(remoteState.subjects) && remoteState.subjects.length ? remoteState.subjects : structuredClone(DEFAULT_STATE.subjects),
+            days: remoteState.days || {},
+            monthGoals: remoteState.monthGoals || {},
+            generalNotes: remoteState.generalNotes || '',
+            lastModified: remoteState.lastModified || new Date().toISOString()
+          };
+
+          saveState(false);
+          ghConfig.lastSyncedAt = state.lastModified;
+          saveGhConfig();
+
+          applyProfileAndTheme();
+          updateView();
+          setGhStatus(`Aparelho atualizado com sucesso! Dados de: ${formatDateTimeBR(state.lastModified)}`, 'ok');
+        } catch (err) {
+          setGhStatus(`Erro: ${err.message}`, 'err');
+        } finally {
+          setGhButtonsLoading(false);
+        }
+      }
+
+      function openGithubModal() {
+        document.getElementById('gh-owner').value = ghConfig.owner || '';
+        document.getElementById('gh-repo').value = ghConfig.repo || '';
+        document.getElementById('gh-path').value = ghConfig.path || 'dados-2027.json';
+        document.getElementById('gh-token').value = sessionToken || '';
+        document.getElementById('gh-remember-token').checked = !!ghConfig.rememberToken;
+
+        const localInfo = `Edição local: <strong>${formatDateTimeBR(state.lastModified)}</strong>`;
+        const syncInfo = `Última sincronização: <strong>${formatDateTimeBR(ghConfig.lastSyncedAt)}</strong>`;
+        setGhStatus(`${localInfo}<br>${syncInfo}`);
+        document.getElementById('github-modal').classList.add('open');
+      }
+
+      function formatDateKey(year, month, day) {
+        const m = String(month + 1).padStart(2, '0');
+        const d = String(day).padStart(2, '0');
+        return `${year}-${m}-${d}`;
+      }
+
+      function getDayData(dateKey) {
+        if (!state.days[dateKey]) {
+          return { hours: 0, stamp: '', notes: '', tasks: [] };
+        }
+        return state.days[dateKey];
+      }
+
+      function ensureDayData(dateKey) {
+        if (!state.days[dateKey]) {
+          state.days[dateKey] = { hours: 0, stamp: '', notes: '', tasks: [] };
+        }
+        return state.days[dateKey];
+      }
+
+      function cleanupDayIfEmpty(dateKey) {
+        const d = state.days[dateKey];
+        if (!d) return;
+        if ((!d.hours || d.hours === 0) && !d.stamp && !d.notes.trim() && (!d.tasks || d.tasks.length === 0)) {
+          delete state.days[dateKey];
+        }
+      }
+
+      function getSubjectById(id) {
+        return state.subjects.find(s => s.id === id) || { id: 'other', name: 'Geral', color: '#7a6a58' };
+      }
+
+      function applyProfileAndTheme() {
+        document.getElementById('notebook-title').textContent = state.profile.title;
+        document.getElementById('notebook-subtitle').textContent = state.profile.subtitle;
+        const themeBtn = document.getElementById('btn-theme');
+        if (state.profile.theme === 'dark') {
+          document.body.classList.add('dark-academia');
+          themeBtn.innerHTML = `${svgIcon('scroll')} Modo Papel`;
+        } else {
+          document.body.classList.remove('dark-academia');
+          themeBtn.innerHTML = `${svgIcon('candle')} Modo Noturno`;
+        }
+      }
+
+      function renderMonthTabs() {
+        const container = document.getElementById('month-tabs');
+        container.innerHTML = '';
+        let activeBtn = null;
+        MONTHS_SHORT.forEach((name, idx) => {
+          const btn = document.createElement('button');
+          const isActive = idx === currentMonth && !isAnnualView;
+          btn.className = 'month-tab' + (isActive ? ' active' : '');
+          btn.textContent = name;
+          btn.addEventListener('click', () => {
+            isAnnualView = false;
+            currentMonth = idx;
+            updateView(true);
+          });
+          container.appendChild(btn);
+          if (isActive) activeBtn = btn;
+        });
+
+        if (activeBtn && window.innerWidth <= 680) {
+          activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      }
+
+      function triggerPageTurn(element) {
+        element.classList.remove('page-turn');
+        void element.offsetWidth;
+        element.classList.add('page-turn');
+      }
+
+      function renderCalendar(animate = false) {
+        const grid = document.getElementById('calendar-grid');
+        grid.innerHTML = '';
+        if (animate) triggerPageTurn(grid);
+
+        document.getElementById('current-month-title').textContent = `${MONTHS[currentMonth]} de 2027`;
+        document.getElementById('month-goals-label').innerHTML = `${svgIcon('scroll')} Metas de ${MONTHS[currentMonth]}`;
+        document.getElementById('month-goals-input').value = state.monthGoals[currentMonth] || '';
+        document.getElementById('general-notes-input').value = state.generalNotes || '';
+
+        WEEKDAYS_SHORT.forEach((wd, idx) => {
+          const hd = document.createElement('div');
+          hd.className = 'weekday-header' + (idx === 0 ? ' sunday' : '');
+          hd.textContent = wd;
+          grid.appendChild(hd);
+        });
+
+        const firstDayWeekday = new Date(2027, currentMonth, 1).getDay();
+        const daysInMonth = new Date(2027, currentMonth + 1, 0).getDate();
+
+        const now = new Date();
+        const todayKey = now.getFullYear() === 2027
+          ? formatDateKey(2027, now.getMonth(), now.getDate())
+          : null;
+
+        for (let i = 0; i < firstDayWeekday; i++) {
+          const empty = document.createElement('div');
+          empty.className = 'day-cell empty';
+          grid.appendChild(empty);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+          const dateKey = formatDateKey(2027, currentMonth, day);
+          const weekday = new Date(2027, currentMonth, day).getDay();
+          const holiday = HOLIDAYS_2027[dateKey];
+          const dayData = getDayData(dateKey);
+
+          const cell = document.createElement('div');
+          cell.className = 'day-cell';
+          if (weekday === 0) cell.classList.add('is-sunday');
+          if (holiday) cell.classList.add('is-holiday');
+          if (dateKey === todayKey) cell.classList.add('is-today');
+
+          if (activeSubjectFilter) {
+            const hasSubject = dayData.tasks && dayData.tasks.some(t => t.subjectId === activeSubjectFilter);
+            if (!hasSubject) cell.classList.add('dimmed');
+          }
+
+          const top = document.createElement('div');
+          top.className = 'day-top';
+
+          const num = document.createElement('span');
+          num.className = 'day-number';
+          num.textContent = day;
+          top.appendChild(num);
+
+          if (holiday) {
+            const hol = document.createElement('span');
+            hol.className = 'holiday-label';
+            hol.textContent = holiday;
+            top.appendChild(hol);
+
+            const dot = document.createElement('span');
+            dot.className = 'holiday-dot';
+            dot.title = holiday;
+            top.appendChild(dot);
+          }
+          cell.appendChild(top);
+
+          if (dayData.stamp) {
+            const stamp = document.createElement('div');
+            stamp.className = `stamp-badge stamp-${dayData.stamp}`;
+            stamp.textContent = dayData.stamp === 'FOCO' ? 'FOCO TOTAL' : dayData.stamp;
+            cell.appendChild(stamp);
+          }
+
+          if (dayData.tasks && dayData.tasks.length > 0) {
+            const tasksWrap = document.createElement('div');
+            tasksWrap.className = 'cell-tasks';
+            const visibleTasks = activeSubjectFilter
+              ? dayData.tasks.filter(t => t.subjectId === activeSubjectFilter)
+              : dayData.tasks;
+
+            const maxItems = window.innerWidth <= 680 ? 2 : 3;
+            visibleTasks.slice(0, maxItems).forEach(t => {
+              const subj = getSubjectById(t.subjectId);
+              const item = document.createElement('div');
+              item.className = 'cell-task-item' + (t.done ? ' done' : '');
+              item.innerHTML = `<span class="subject-dot" style="background:${subj.color}"></span><span>${escapeHtml(t.text)}</span>`;
+              tasksWrap.appendChild(item);
+            });
+
+            if (visibleTasks.length > maxItems) {
+              const more = document.createElement('div');
+              more.className = 'cell-more';
+              more.textContent = `+${visibleTasks.length - maxItems}`;
+              tasksWrap.appendChild(more);
+            }
+            cell.appendChild(tasksWrap);
+          }
+
+          const bottom = document.createElement('div');
+          bottom.className = 'day-bottom';
+          if (dayData.notes && dayData.notes.trim()) {
+            const noteIcon = document.createElement('span');
+            noteIcon.className = 'note-icon';
+            noteIcon.title = 'Possui anotações';
+            noteIcon.innerHTML = `${svgIcon('pen', true)} nota`;
+            bottom.appendChild(noteIcon);
+          }
+          if (dayData.hours && dayData.hours > 0) {
+            const hPill = document.createElement('span');
+            hPill.className = 'hours-pill';
+            hPill.textContent = `${dayData.hours}h`;
+            bottom.appendChild(hPill);
+          }
+          cell.appendChild(bottom);
+
+          cell.addEventListener('click', () => openDayModal(dateKey));
+          grid.appendChild(cell);
+        }
+
+        const totalCells = firstDayWeekday + daysInMonth;
+        const remainder = totalCells % 7;
+        if (remainder !== 0) {
+          for (let i = 0; i < 7 - remainder; i++) {
+            const empty = document.createElement('div');
+            empty.className = 'day-cell empty';
+            grid.appendChild(empty);
+          }
+        }
+      }
+
+      function renderStatsAndFilters() {
+        let monthHours = 0;
+        let yearHours = 0;
+        let monthTasksTotal = 0;
+        let monthTasksDone = 0;
+        let studyDays = 0;
+        const subjectCounts = {};
+
+        state.subjects.forEach(s => { subjectCounts[s.id] = 0; });
+
+        const monthPrefix = `2027-${String(currentMonth + 1).padStart(2, '0')}-`;
+
+        Object.entries(state.days).forEach(([key, d]) => {
+          const hrs = Number(d.hours) || 0;
+          yearHours += hrs;
+
+          if (key.startsWith(monthPrefix)) {
+            monthHours += hrs;
+            const hasActivity = hrs > 0 || (d.tasks && d.tasks.length > 0);
+            if (hasActivity) studyDays++;
+            if (d.tasks) {
+              d.tasks.forEach(t => {
+                monthTasksTotal++;
+                if (t.done) monthTasksDone++;
+                if (subjectCounts[t.subjectId] !== undefined) {
+                  subjectCounts[t.subjectId]++;
+                }
+              });
+            }
+          }
+        });
+
+        document.getElementById('stat-month-hours').textContent = `${formatHours(monthHours)}h`;
+        document.getElementById('stat-year-hours').textContent = `${formatHours(yearHours)}h`;
+        document.getElementById('stat-tasks-done').textContent = `${monthTasksDone}/${monthTasksTotal}`;
+        document.getElementById('stat-study-days').textContent = studyDays;
+
+        const filterList = document.getElementById('subject-filter-list');
+        filterList.innerHTML = '';
+
+        const allItem = document.createElement('div');
+        allItem.className = 'subject-filter-item' + (!activeSubjectFilter ? ' active' : '');
+        allItem.innerHTML = `<span class="subject-left">${svgIcon('star', true)} Todas as Matérias</span><span class="subject-count">${monthTasksTotal}</span>`;
+        allItem.addEventListener('click', () => {
+          activeSubjectFilter = null;
+          renderCalendar();
+          renderStatsAndFilters();
+        });
+        filterList.appendChild(allItem);
+
+        state.subjects.forEach(subj => {
+          const item = document.createElement('div');
+          item.className = 'subject-filter-item' + (activeSubjectFilter === subj.id ? ' active' : '');
+          item.innerHTML = `
+            <span class="subject-left">
+              <span class="subject-dot" style="background:${subj.color}; width:10px; height:10px;"></span>
+              <span>${escapeHtml(subj.name)}</span>
+            </span>
+            <span class="subject-count">${subjectCounts[subj.id] || 0}</span>
+          `;
+          item.addEventListener('click', () => {
+            activeSubjectFilter = activeSubjectFilter === subj.id ? null : subj.id;
+            renderCalendar();
+            renderStatsAndFilters();
+          });
+          filterList.appendChild(item);
+        });
+      }
+
+      function renderAnnualView() {
+        const container = document.getElementById('annual-grid');
+        container.innerHTML = '';
+        triggerPageTurn(container);
+
+        MONTHS.forEach((monthName, mIdx) => {
+          const card = document.createElement('div');
+          card.className = 'mini-month';
+          card.addEventListener('click', () => {
+            isAnnualView = false;
+            currentMonth = mIdx;
+            updateView(true);
+          });
+
+          const prefix = `2027-${String(mIdx + 1).padStart(2, '0')}-`;
+          let mHours = 0;
+          Object.entries(state.days).forEach(([k, v]) => {
+            if (k.startsWith(prefix)) mHours += Number(v.hours) || 0;
+          });
+
+          const title = document.createElement('div');
+          title.className = 'mini-month-title';
+          title.innerHTML = `<span>${monthName}</span><span class="mini-month-hours">${formatHours(mHours)}h</span>`;
+          card.appendChild(title);
+
+          const miniGrid = document.createElement('div');
+          miniGrid.className = 'mini-cal-grid';
+
+          ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'].forEach(w => {
+            const wh = document.createElement('div');
+            wh.style.fontWeight = 'bold';
+            wh.style.color = 'var(--ink-muted)';
+            wh.textContent = w;
+            miniGrid.appendChild(wh);
+          });
+
+          const firstWd = new Date(2027, mIdx, 1).getDay();
+          const totalDays = new Date(2027, mIdx + 1, 0).getDate();
+
+          for (let i = 0; i < firstWd; i++) {
+            miniGrid.appendChild(document.createElement('div'));
+          }
+
+          for (let d = 1; d <= totalDays; d++) {
+            const dKey = formatDateKey(2027, mIdx, d);
+            const dData = state.days[dKey];
+            const cell = document.createElement('div');
+            cell.className = 'mini-day';
+            cell.textContent = d;
+
+            if (dData && ((dData.hours && dData.hours > 0) || (dData.tasks && dData.tasks.length > 0) || dData.stamp)) {
+              cell.classList.add('has-activity');
+            } else if (HOLIDAYS_2027[dKey]) {
+              cell.classList.add('has-holiday');
+            }
+            miniGrid.appendChild(cell);
+          }
+
+          card.appendChild(miniGrid);
+          container.appendChild(card);
+        });
+      }
+
+      function updateView(animate = false) {
+        renderMonthTabs();
+        const annualBtn = document.getElementById('btn-annual-view');
+        if (isAnnualView) {
+          document.getElementById('monthly-view').style.display = 'none';
+          document.getElementById('annual-view').style.display = 'block';
+          annualBtn.innerHTML = `${svgIcon('month')} Visão Mensal`;
+          renderAnnualView();
+        } else {
+          document.getElementById('monthly-view').style.display = 'grid';
+          document.getElementById('annual-view').style.display = 'none';
+          annualBtn.innerHTML = `${svgIcon('calendar')} Visão Anual`;
+          renderCalendar(animate);
+          renderStatsAndFilters();
+        }
+      }
+
+      function openDayModal(dateKey) {
+        selectedDateKey = dateKey;
+        const [y, m, d] = dateKey.split('-').map(Number);
+        const dateObj = new Date(y, m - 1, d);
+        const wd = WEEKDAYS[dateObj.getDay()];
+        const holiday = HOLIDAYS_2027[dateKey];
+
+        document.getElementById('modal-date-title').textContent = `${d} de ${MONTHS[m - 1]} de ${y}`;
+        document.getElementById('modal-date-subtitle').textContent = holiday ? `${wd} — Feriado: ${holiday}` : wd;
+
+        const dayData = getDayData(dateKey);
+
+        document.querySelectorAll('#stamp-selector .stamp-option').forEach(btn => {
+          btn.classList.toggle('selected', btn.dataset.stamp === (dayData.stamp || ''));
+        });
+
+        document.getElementById('modal-hours-input').value = dayData.hours || 0;
+
+        const select = document.getElementById('new-task-subject');
+        select.innerHTML = '';
+        state.subjects.forEach(s => {
+          const opt = document.createElement('option');
+          opt.value = s.id;
+          opt.textContent = s.name;
+          select.appendChild(opt);
+        });
+
+        document.getElementById('modal-notes-input').value = dayData.notes || '';
+
+        renderModalTasks();
+        document.getElementById('day-modal').classList.add('open');
+        if (window.innerWidth > 680) {
+          document.getElementById('new-task-input').focus();
+        }
+      }
+
+      function renderModalTasks() {
+        const list = document.getElementById('modal-task-list');
+        list.innerHTML = '';
+        const dayData = getDayData(selectedDateKey);
+
+        if (!dayData.tasks || dayData.tasks.length === 0) {
+          list.innerHTML = '<li style="font-style:italic; color: var(--ink-muted); font-size: 0.92rem;">Nenhuma tarefa registrada para este dia.</li>';
+          return;
+        }
+
+        dayData.tasks.forEach(task => {
+          const subj = getSubjectById(task.subjectId);
+          const li = document.createElement('li');
+          li.className = 'modal-task-item';
+
+          const left = document.createElement('div');
+          left.className = 'modal-task-left';
+
+          const cb = document.createElement('input');
+          cb.type = 'checkbox';
+          cb.checked = !!task.done;
+          cb.addEventListener('change', () => {
+            task.done = cb.checked;
+            saveState();
+            renderModalTasks();
+            renderCalendar();
+            renderStatsAndFilters();
+          });
+
+          const text = document.createElement('span');
+          text.className = 'modal-task-text' + (task.done ? ' done' : '');
+          text.textContent = task.text;
+
+          const tag = document.createElement('span');
+          tag.className = 'subject-tag';
+          tag.style.backgroundColor = subj.color;
+          tag.textContent = subj.name;
+
+          left.appendChild(cb);
+          left.appendChild(text);
+
+          const right = document.createElement('div');
+          right.style.display = 'flex';
+          right.style.alignItems = 'center';
+          right.style.gap = '6px';
+
+          const del = document.createElement('button');
+          del.className = 'delete-btn';
+          del.title = 'Remover tarefa';
+          del.innerHTML = svgIcon('close', true);
+          del.addEventListener('click', () => {
+            const d = ensureDayData(selectedDateKey);
+            d.tasks = d.tasks.filter(t => t.id !== task.id);
+            cleanupDayIfEmpty(selectedDateKey);
+            saveState();
+            renderModalTasks();
+            renderCalendar();
+            renderStatsAndFilters();
+          });
+
+          right.appendChild(tag);
+          right.appendChild(del);
+
+          li.appendChild(left);
+          li.appendChild(right);
+          list.appendChild(li);
+        });
+      }
+
+      function addTaskToSelectedDay() {
+        const input = document.getElementById('new-task-input');
+        const text = input.value.trim();
+        if (!text) return;
+
+        const subjectId = document.getElementById('new-task-subject').value;
+        const d = ensureDayData(selectedDateKey);
+        d.tasks.push({
+          id: 't_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+          text,
+          subjectId,
+          done: false
+        });
+
+        input.value = '';
+        saveState();
+        renderModalTasks();
+        renderCalendar();
+        renderStatsAndFilters();
+        input.focus();
+      }
+
+      function closeDayModal() {
+        document.getElementById('day-modal').classList.remove('open');
+        selectedDateKey = null;
+      }
+
+      function renderSubjectsManager() {
+        const list = document.getElementById('subject-manager-list');
+        list.innerHTML = '';
+
+        state.subjects.forEach(subj => {
+          const row = document.createElement('div');
+          row.className = 'subject-manager-row';
+          row.innerHTML = `
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="subject-dot" style="background:${subj.color}; width:14px; height:14px;"></span>
+              <span>${escapeHtml(subj.name)}</span>
+            </div>
+          `;
+          const delBtn = document.createElement('button');
+          delBtn.className = 'btn btn-sm';
+          delBtn.textContent = 'Remover';
+          delBtn.addEventListener('click', () => {
+            if (state.subjects.length <= 1) {
+              alert('É necessário manter pelo menos uma matéria.');
+              return;
+            }
+            if (confirm(`Remover a matéria "${subj.name}"?`)) {
+              state.subjects = state.subjects.filter(s => s.id !== subj.id);
+              if (activeSubjectFilter === subj.id) activeSubjectFilter = null;
+              saveState();
+              renderSubjectsManager();
+              renderCalendar();
+              renderStatsAndFilters();
+            }
+          });
+          row.appendChild(delBtn);
+          list.appendChild(row);
+        });
+      }
+
+      function playBellSound() {
+        try {
+          const ctx = new (window.AudioContext || window.webkitAudioContext)();
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(660, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 1.2);
+          gain.gain.setValueAtTime(0.3, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.5);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 1.5);
+        } catch (e) {}
+      }
+
+      function updateTimerDisplay() {
+        const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+        const secs = String(timerSeconds % 60).padStart(2, '0');
+        const el = document.getElementById('timer-display');
+        el.textContent = `${mins}:${secs}`;
+        el.classList.toggle('timer-running', timerInterval !== null);
+      }
+
+      function startTimer() {
+        if (timerInterval) return;
+        timerInterval = setInterval(() => {
+          if (timerSeconds > 0) {
+            timerSeconds--;
+            updateTimerDisplay();
+          } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            updateTimerDisplay();
+            playBellSound();
+            alert('Tempo concluído! Faça uma breve pausa ou registre suas horas no calendário.');
+          }
+        }, 1000);
+        updateTimerDisplay();
+      }
+
+      function pauseTimer() {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        updateTimerDisplay();
+      }
+
+      function resetTimer(minutes = 25) {
+        pauseTimer();
+        timerSeconds = minutes * 60;
+        updateTimerDisplay();
+      }
+
+      function formatHours(num) {
+        return Number.isInteger(num) ? num : num.toFixed(1).replace('.0', '');
+      }
+
+      function escapeHtml(str) {
+        return str.replace(/[&<>"']/g, m => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[m]));
+      }
+
+      function setupEventListeners() {
+        document.getElementById('notebook-title').addEventListener('click', () => {
+          const val = prompt('Personalize o título do seu caderno de estudos:', state.profile.title);
+          if (val !== null && val.trim()) {
+            state.profile.title = val.trim();
+            saveState();
+            applyProfileAndTheme();
+          }
+        });
+
+        document.getElementById('notebook-subtitle').addEventListener('click', () => {
+          const val = prompt('Personalize seu lema ou objetivo de 2027:', state.profile.subtitle);
+          if (val !== null && val.trim()) {
+            state.profile.subtitle = val.trim();
+            saveState();
+            applyProfileAndTheme();
+          }
+        });
+
+        document.getElementById('btn-theme').addEventListener('click', () => {
+          state.profile.theme = state.profile.theme === 'dark' ? 'parchment' : 'dark';
+          saveState();
+          applyProfileAndTheme();
+        });
+
+        document.getElementById('prev-month').addEventListener('click', () => {
+          currentMonth = (currentMonth + 11) % 12;
+          updateView(true);
+        });
+
+        document.getElementById('next-month').addEventListener('click', () => {
+          currentMonth = (currentMonth + 1) % 12;
+          updateView(true);
+        });
+
+        document.getElementById('btn-annual-view').addEventListener('click', () => {
+          isAnnualView = !isAnnualView;
+          updateView(true);
+        });
+
+        document.getElementById('btn-back-to-month').addEventListener('click', () => {
+          isAnnualView = false;
+          updateView(true);
+        });
+
+        document.getElementById('month-goals-input').addEventListener('input', (e) => {
+          state.monthGoals[currentMonth] = e.target.value;
+          saveState();
+        });
+
+        document.getElementById('general-notes-input').addEventListener('input', (e) => {
+          state.generalNotes = e.target.value;
+          saveState();
+        });
+
+        document.getElementById('close-day-modal').addEventListener('click', closeDayModal);
+        document.getElementById('day-modal').addEventListener('click', (e) => {
+          if (e.target.id === 'day-modal') closeDayModal();
+        });
+
+        document.querySelectorAll('#stamp-selector .stamp-option').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const stamp = btn.dataset.stamp;
+            const d = ensureDayData(selectedDateKey);
+            d.stamp = stamp;
+            cleanupDayIfEmpty(selectedDateKey);
+            saveState();
+            document.querySelectorAll('#stamp-selector .stamp-option').forEach(b => {
+              b.classList.toggle('selected', b.dataset.stamp === stamp);
+              b.classList.remove('stamp-pop');
+            });
+            void btn.offsetWidth;
+            btn.classList.add('stamp-pop');
+            renderCalendar();
+          });
+        });
+
+        document.getElementById('modal-hours-input').addEventListener('input', (e) => {
+          const val = Math.max(0, Math.min(24, parseFloat(e.target.value) || 0));
+          const d = ensureDayData(selectedDateKey);
+          d.hours = val;
+          cleanupDayIfEmpty(selectedDateKey);
+          saveState();
+          renderCalendar();
+          renderStatsAndFilters();
+        });
+
+        document.querySelectorAll('[data-add-hours]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const inc = parseFloat(btn.dataset.addHours);
+            const input = document.getElementById('modal-hours-input');
+            const next = Math.min(24, (parseFloat(input.value) || 0) + inc);
+            input.value = next;
+            input.dispatchEvent(new Event('input'));
+          });
+        });
+
+        document.getElementById('modal-hours-clear').addEventListener('click', () => {
+          const input = document.getElementById('modal-hours-input');
+          input.value = 0;
+          input.dispatchEvent(new Event('input'));
+        });
+
+        document.getElementById('add-task-btn').addEventListener('click', addTaskToSelectedDay);
+        document.getElementById('new-task-input').addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') addTaskToSelectedDay();
+        });
+
+        document.getElementById('modal-notes-input').addEventListener('input', (e) => {
+          const d = ensureDayData(selectedDateKey);
+          d.notes = e.target.value;
+          cleanupDayIfEmpty(selectedDateKey);
+          saveState();
+          renderCalendar();
+        });
+
+        document.getElementById('btn-subjects').addEventListener('click', () => {
+          renderSubjectsManager();
+          document.getElementById('subjects-modal').classList.add('open');
+        });
+
+        document.getElementById('close-subjects-modal').addEventListener('click', () => {
+          document.getElementById('subjects-modal').classList.remove('open');
+        });
+
+        document.getElementById('subjects-modal').addEventListener('click', (e) => {
+          if (e.target.id === 'subjects-modal') {
+            document.getElementById('subjects-modal').classList.remove('open');
+          }
+        });
+
+        document.getElementById('add-subject-btn').addEventListener('click', () => {
+          const nameInput = document.getElementById('new-subject-name');
+          const colorInput = document.getElementById('new-subject-color');
+          const name = nameInput.value.trim();
+          if (!name) return;
+
+          state.subjects.push({
+            id: 'subj_' + Date.now(),
+            name,
+            color: colorInput.value
+          });
+          nameInput.value = '';
+          saveState();
+          renderSubjectsManager();
+          renderStatsAndFilters();
+          renderCalendar();
+        });
+
+        document.getElementById('btn-github-sync').addEventListener('click', openGithubModal);
+        document.getElementById('close-github-modal').addEventListener('click', () => {
+          document.getElementById('github-modal').classList.remove('open');
+        });
+        document.getElementById('github-modal').addEventListener('click', (e) => {
+          if (e.target.id === 'github-modal') {
+            document.getElementById('github-modal').classList.remove('open');
+          }
+        });
+        document.getElementById('gh-push-btn').addEventListener('click', pushToGithub);
+        document.getElementById('gh-pull-btn').addEventListener('click', pullFromGithub);
+        document.getElementById('gh-remember-token').addEventListener('change', readGhInputs);
+
+        document.getElementById('timer-start').addEventListener('click', startTimer);
+        document.getElementById('timer-pause').addEventListener('click', pauseTimer);
+        document.getElementById('timer-reset').addEventListener('click', () => resetTimer(25));
+        document.querySelectorAll('[data-minutes]').forEach(btn => {
+          btn.addEventListener('click', () => resetTimer(parseInt(btn.dataset.minutes, 10)));
+        });
+
+        document.getElementById('btn-export').addEventListener('click', () => {
+          const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `backup-estudos-2027-${new Date().toISOString().slice(0, 10)}.json`;
+          a.click();
+          URL.revokeObjectURL(url);
+        });
+
+        document.getElementById('btn-import').addEventListener('click', () => {
+          document.getElementById('import-file-input').click();
+        });
+
+        document.getElementById('import-file-input').addEventListener('change', (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            try {
+              const imported = JSON.parse(ev.target.result);
+              if (!imported || typeof imported !== 'object' || !imported.days) {
+                throw new Error('Formato inválido');
+              }
+              if (confirm('Isso substituirá os dados atuais pelos dados do backup. Deseja continuar?')) {
+                state = {
+                  profile: { ...DEFAULT_STATE.profile, ...(imported.profile || {}) },
+                  subjects: imported.subjects || structuredClone(DEFAULT_STATE.subjects),
+                  days: imported.days || {},
+                  monthGoals: imported.monthGoals || {},
+                  generalNotes: imported.generalNotes || '',
+                  lastModified: imported.lastModified || new Date().toISOString()
+                };
+                saveState(false);
+                applyProfileAndTheme();
+                updateView(true);
+                alert('Backup restaurado com sucesso!');
+              }
+            } catch (err) {
+              alert('Arquivo de backup inválido.');
+            }
+          };
+          reader.readAsText(file);
+          e.target.value = '';
+        });
+
+        document.getElementById('btn-print').addEventListener('click', () => {
+          if (isAnnualView) {
+            isAnnualView = false;
+            updateView();
+          }
+          window.print();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closeDayModal();
+            document.getElementById('subjects-modal').classList.remove('open');
+            document.getElementById('github-modal').classList.remove('open');
+          }
+        });
+      }
+
+      initStaticIcons();
+      applyProfileAndTheme();
+      setupEventListeners();
+      updateTimerDisplay();
+      updateView();
+    })();
+  </script>
+</body>
+</html>
